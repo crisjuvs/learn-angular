@@ -1,0 +1,35 @@
+<div>
+  <input type="text" [(ngModel)]="title" />
+  <p>{{ title }}</p>
+</div>
+
+<div [ngSwitch]="title">
+  <p *ngSwitchCase="'José'">Este es José</p>
+  <p *ngSwitchCase="'Miguel'">Este es Miguel</p>
+  <p *ngSwitchCase="'Carlos'">Este es Carlos</p>
+  <p *ngSwitchDefault>Valor no encontrado</p>
+</div>
+
+<button (click)="addOpcion()">Añadir opcion</button>
+
+<ul>
+  <div *ngIf="items.length === 0"><p>Lista vacía</p></div>
+  <li *ngFor="let lista of items; index as x">
+    {{ lista }} : {{ x }}
+    <button (click)="delete(x)">Delete {{ x }}</button>
+  </li>
+</ul>
+
+<ul>
+  <li *ngFor="let persona of personas">
+    {{ persona.id }}
+    {{ persona.nombre }}
+    {{ persona.apellido }}
+    {{ persona.edad }}
+    <img [src]="persona.img" [alt]="persona.nombreImg" />
+  </li>
+</ul>
+<app-second-component></app-second-component>
+<div *ngFor="let emp of perso">
+  <app-main-component [empleado]="emp"></app-main-component>
+</div>
